@@ -15,8 +15,9 @@ import { lang, switchLanguage } from "~/stores/AppLanguage/store.language";
 
 <style lang="scss" scoped>
 .btn-language {
-  position: absolute;
+  position: fixed;
   right: 10px;
   bottom: 10px;
+  z-index: 1999;
 }
 </style>
