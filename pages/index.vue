@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { NormalizeDeveloperType } from "~/server/types/types";
-import { lang } from "~/stores/AppLanguage/store.language";
+import type { NormalizeDeveloperType } from "~/server/types";
+import { language } from "~/stores/AppLanguage/store.language";
 
 const { data, page, reFetch } = useSSRFetch();
 const router = useRouter();
@@ -9,11 +9,11 @@ const devs = computed(() => {
   return data.value?.data?.map<NormalizeDeveloperType>((item) => {
     return {
       id: item.id,
-      title: item.title[lang.value],
+      title: item.title[language.value],
       type: item.type,
-      price: humanReadablePrice(Number(item.price), lang.value !== "en"),
+      price: humanReadablePrice(Number(item.price), language.value !== "en"),
       images: item.images,
-      description: item.description[lang.value],
+      description: item.description[language.value],
     };
   });
 });
@@ -24,11 +24,12 @@ const goTo = (id: number) => {
 
 const onSearch = (type: string) => {
   if (type === "All") type = "";
+  page.value = 1;
   reFetch(type);
 };
 </script>
 <template>
-  <!-- <section class="page"> -->
+  <section class="page">
     <GridLayout>
       <DeveloperCard
         v-for="developer in devs"
@@ -41,9 +42,8 @@ const onSearch = (type: string) => {
         @emit:click="goTo(developer.id)"
       />
     </GridLayout>
-    <!-- <div class="page__content"></div> -->
 
-    <!-- <div class="page__pag-wrapper">
+    <div class="page__bottom">
       <Pagination
         v-if="data && data.pages !== 0"
         :count="data.pages"
@@ -54,26 +54,13 @@ const onSearch = (type: string) => {
         :types="['All', 'Villa', 'Condo']"
         @emit:search="onSearch"
       />
-    </div> -->
-  <!-- </section> -->
+    </div>
+  </section>
 </template>
 
 <style lang="scss" scoped>
 .page {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100vh;
-  padding: 5px;
-
-  &__content {
-    display: grid;
-    place-items: center;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 5px;
-  }
-
-  &__pag-wrapper {
+  &__bottom {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
