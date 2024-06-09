@@ -6,8 +6,6 @@ type PropsType = {
 const props = defineProps<Partial<PropsType>>();
 
 const currSlideIndex = ref(0);
-let intervalID = null;
-const isPause = ref(false);
 
 const onPrev = () => {
   if (props.imgages === undefined) return;

@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { language, switchLanguage } from "~/stores/AppLanguage/store.language";
+import { language, switchLanguage } from '../stores/AppLanguage/store.language';
+
+
 </script>
 
 <template>

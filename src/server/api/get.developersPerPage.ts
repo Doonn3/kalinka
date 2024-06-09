@@ -1,5 +1,5 @@
 import { SimpleQueryBuilder } from "../SimpleQueryBuilder/SimpleQueryBuilder";
-import { DeveloperType } from "../types/types";
+import { DeveloperType } from "../types";
 
 export default defineEventHandler(async (event) => {
   const query = getQuery(event);
