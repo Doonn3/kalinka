@@ -1,11 +1,17 @@
 {
-    "version": 2,
-    "builds": [
-        {
-            "use": "@vercel/node",
-            "config": {
-                "includeFiles": ["db.json"]
-            }
-        }
-    ]
+  "version": 2,
+  "builds": [
+    {
+      "src": "src/server/server.ts",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["db.json"]
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)"
+    }
+  ]
 }

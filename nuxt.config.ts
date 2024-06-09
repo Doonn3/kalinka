@@ -5,4 +5,7 @@ export default defineNuxtConfig({
   srcDir: "./src",
   css: ["~/assets/main.scss"],
   modules: ["@nuxt/image"],
+  nitro: {
+    preset: 'vercel'
+  }
 });
