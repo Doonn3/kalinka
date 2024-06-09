@@ -6,6 +6,8 @@ import { useSSRFetch } from "./_hooks/useSSRFetch";
 const { data, page, reFetch } = useSSRFetch();
 const router = useRouter();
 
+const TYPES = ["All", "Villa", "Condo"];
+
 const devs = computed(() => {
   return data.value?.data?.map<NormalizeDeveloperType>((item) => {
     return {
@@ -36,7 +38,7 @@ const onSearch = (type: string) => {
         v-for="developer in devs"
         :key="developer.id"
         :id="developer.id"
-        :images="developer.images"
+        :image="developer.images[0]"
         :price="developer.price"
         :title="developer.title"
         :type="developer.type"
@@ -52,7 +54,7 @@ const onSearch = (type: string) => {
       />
 
       <SearchFilter
-        :types="['All', 'Villa', 'Condo']"
+        :types="TYPES"
         @emit:search="onSearch"
       />
     </div>

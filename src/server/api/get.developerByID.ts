@@ -1,13 +1,11 @@
-import { SimpleQueryBuilder } from "../SimpleQueryBuilder/SimpleQueryBuilder";
+import { BASE_URL } from "../constants/constant";
 import { DeveloperType } from "../types";
 
 export default defineEventHandler(async (event) => {
   const query = getQuery(event);
   const { id } = query;
 
-  const queryBuild = new SimpleQueryBuilder()
-    .developers()
-    .byID(Number(id)).Query;
+  let queryBuild = BASE_URL + `/${id}`;
 
   const result = await $fetch<DeveloperType>(queryBuild);
 

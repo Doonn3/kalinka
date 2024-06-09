@@ -1,14 +1,15 @@
-import { SimpleQueryBuilder } from "../SimpleQueryBuilder/SimpleQueryBuilder";
+import { BASE_URL } from "../constants/constant";
 import { DeveloperType } from "../types";
 
 export default defineEventHandler(async (event) => {
   const query = getQuery(event);
   const { page, limit, filter } = query;
 
-  const queryBuild = new SimpleQueryBuilder()
-    .developers()
-    .pagination(Number(page), Number(limit))
-    .getTypes(String(filter)).Query;
+  let queryBuild = BASE_URL + `?_page=${page}&_limit=${limit}`;
+
+  if (filter) {
+    queryBuild += `&type_like=${filter}`;
+  }
 
   const result: { data: DeveloperType[]; pages: number } = {
     data: [],

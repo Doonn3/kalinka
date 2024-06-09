@@ -4,7 +4,7 @@ type PropsType = {
   title: string;
   type: string[];
   price: string;
-  images: string[];
+  image: string;
 };
 
 const props = defineProps<PropsType>();
@@ -13,12 +13,11 @@ const emit = defineEmits<(e: "emit:click") => void>();
 
 <template>
   <div class="developer" @click="emit('emit:click')">
-    <NuxtImg :src="props.images[0]" alt="img" />
+    <span class="developer__type">{{ props.type.join("") }}</span>
+    <NuxtImg :src="props.image" alt="img" />
     <div class="content">
-      <div class="content__head">
-        <span class="content__title">{{ props.title }}</span>
-        <span class="content__type">{{ props.type.join("") }}</span>
-      </div>
+      <span class="content__title">{{ props.title }}</span>
+
       <div>
         <span class="content__price">{{ props.price }}</span>
       </div>
@@ -28,6 +27,7 @@ const emit = defineEmits<(e: "emit:click") => void>();
 
 <style lang="scss" scoped>
 .developer {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,10 +45,19 @@ const emit = defineEmits<(e: "emit:click") => void>();
     transform: scale(1.01);
   }
 
+  &__type {
+    position: absolute;
+    top: 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+  }
+
   & > img {
     width: 100%;
     height: 100%;
     max-height: 240px;
+    min-height: 240px;
     object-fit: cover;
   }
 }
@@ -63,10 +72,6 @@ const emit = defineEmits<(e: "emit:click") => void>();
 
   &__title {
     font-size: 1.2rem;
-  }
-
-  &__type {
-    font-size: 0.8rem;
   }
 
   &__price {
