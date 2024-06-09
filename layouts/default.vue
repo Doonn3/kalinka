@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { lang, switchLanguage } from "~/stores/AppLanguage/store.language";
+import { language, switchLanguage } from "~/stores/AppLanguage/store.language";
 </script>
 
 <template>
   <div>
     <SwitchLanguge
       class="btn-language"
-      :lang="lang"
+      :lang="language"
       @emit:switch="switchLanguage"
     />
     <slot></slot>
@@ -18,6 +18,6 @@ import { lang, switchLanguage } from "~/stores/AppLanguage/store.language";
   position: fixed;
   right: 10px;
   bottom: 10px;
-  z-index: 1999;
+  z-index: 2999;
 }
 </style>

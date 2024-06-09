@@ -11,10 +11,5 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 5px;
   padding: 10px;
-
-  @media (max-width: 1440px) {
-    display: flex;
-    flex-wrap: wrap;
-  }
 }
 </style>
