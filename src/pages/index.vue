@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import type { NormalizeDeveloperType } from "~/server/types";
 import { language } from "~/stores/AppLanguage/store.language";
+import { useSSRFetch } from "./_hooks/useSSRFetch";
 
 const { data, page, reFetch } = useSSRFetch();
 const router = useRouter();
@@ -60,14 +61,19 @@ const onSearch = (type: string) => {
 
 <style lang="scss" scoped>
 .page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 5px;
+  padding: 5px;
+
   &__bottom {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     gap: 10px;
     height: 100px;
-    padding: 10px;
-    background-color: #5c5c5c;
+    background-color: #303030;
     border-radius: 5px;
   }
 }

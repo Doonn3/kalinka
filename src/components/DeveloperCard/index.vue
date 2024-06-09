@@ -13,7 +13,7 @@ const emit = defineEmits<(e: "emit:click") => void>();
 
 <template>
   <div class="developer" @click="emit('emit:click')">
-    <img :src="props.images[0]" alt="" />
+    <NuxtImg :src="props.images[0]" alt="img" />
     <div class="content">
       <div class="content__head">
         <span class="content__title">{{ props.title }}</span>
@@ -28,73 +28,50 @@ const emit = defineEmits<(e: "emit:click") => void>();
 
 <style lang="scss" scoped>
 .developer {
-  position: relative;
-  width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   height: 320px;
-
-  background-color: rgb(48, 48, 48);
-  border: 1px solid black;
-  border-radius: 5px;
-
+  padding: 10px;
+  background-color: #303030;
   color: white;
-
-  transition: 0.4s ease-out;
+  border: 1px solid white;
+  border-radius: 5px;
+  transition: transform 0.4s ease-out;
   cursor: pointer;
 
   &:hover {
     transform: scale(1.01);
   }
 
-  &__title {
-    font-size: 28px;
-  }
-
   & > img {
     width: 100%;
     height: 100%;
-  }
-
-  @media (max-width: 400px) {
-    width: 300px;
-    height: 300px;
+    max-height: 240px;
+    object-fit: cover;
   }
 }
 
 .content {
-  position: absolute;
-  top: 0;
-  left: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  gap: 10px;
   width: 100%;
-  height: 100%;
-  padding: 10px;
-
-  background-color: rgba(0, 0, 0, 0.4);
-  -webkit-text-stroke-width: 0.2px;
-  -webkit-text-stroke-color: black;
-
-  &__head {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
+  text-align: center;
 
   &__title {
-    font-size: 25px;
-    text-align: center;
+    font-size: 1.2rem;
   }
 
   &__type {
-    font-size: 15px;
+    font-size: 0.8rem;
   }
 
   &__price {
-    font-size: 30px;
-    color: rgb(255, 186, 121);
+    font-size: 1.5rem;
+    color: #ffba79;
   }
 }
 </style>

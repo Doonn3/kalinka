@@ -27,7 +27,7 @@ const emit = defineEmits<(e: "emit:switch") => void>();
   cursor: pointer;
 
   &:hover {
-    box-shadow: 0 0 20px #3475ca;
+    box-shadow: 0 0 20px #01f1a1;
   }
 }
 </style>

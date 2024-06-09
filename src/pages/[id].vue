@@ -29,18 +29,18 @@ const developer = computed(() => {
 
 <template>
   <section class="page">
-    <span class="page__title">{{ developer.title }}</span>
-    <span class="page__type">{{ developer.type?.join("") }}</span>
-
-    <Price>{{ developer.price }}</Price>
-
-    <div v-html="developer.description"></div>
-
     <ClientOnly>
       <Slider :imgages="developer.images" />
     </ClientOnly>
 
-    <NuxtLink class="back-link" to="/">Back</NuxtLink>
+    <div class="page__bg">
+      <span class="page__title">{{ developer.title }}</span>
+      <span class="page__type">{{ developer.type?.join("") }}</span>
+      <Price>{{ developer.price }}</Price>
+      <div class="page__description" v-html="developer.description"></div>
+
+      <NuxtLink class="back-link" to="/">Back</NuxtLink>
+    </div>
   </section>
 </template>
 
@@ -48,8 +48,17 @@ const developer = computed(() => {
 .page {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 10px;
   padding: 10px;
+
+  &__bg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    background-color: #303030;
+    color: white;
+  }
 
   &__title {
     font-size: 40px;
@@ -57,6 +66,10 @@ const developer = computed(() => {
 
   &__type {
     font-size: 30px;
+  }
+
+  &__description {
+    font-size: 20px;
   }
 }
 
