@@ -6,6 +6,12 @@ export default defineNuxtConfig({
   css: ["~/assets/main.scss"],
   modules: ["@nuxt/image"],
   nitro: {
-    preset: 'vercel'
-  }
+    preset: "vercel",
+    storage: {
+      db: {
+        driver: "fs",
+        base: "./db/json",
+      },
+    },
+  },
 });
