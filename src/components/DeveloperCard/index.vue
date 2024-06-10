@@ -48,9 +48,10 @@ const emit = defineEmits<(e: "emit:click") => void>();
   &__type {
     position: absolute;
     top: 20px;
-    font-size: 1rem;
+    font-size: 1.8rem;
     font-weight: bold;
     color: white;
+    -webkit-text-stroke: 1px black;
   }
 
   & > img {
