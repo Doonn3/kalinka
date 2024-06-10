@@ -7,11 +7,5 @@ export default defineNuxtConfig({
   modules: ["@nuxt/image"],
   nitro: {
     preset: "vercel",
-    storage: {
-      db: {
-        driver: "fs",
-        base: "./db/json",
-      },
-    },
   },
 });
