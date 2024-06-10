@@ -1,0 +1,15 @@
+html {
+    box-sizing: border-box;
+}
+
+body {
+    max-width: 1920px;
+    min-height: 100vh;
+    margin: 0 auto;
+}
+
+*,
+::before,
+::after {
+    box-sizing: inherit;
+}
