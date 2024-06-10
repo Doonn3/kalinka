@@ -1,11 +1,11 @@
-import { BASE_URL } from "../constants/constant";
+import { BASE_URL, MAX_ITEMS_PER_PAGE } from "../constants/constant";
 import { DeveloperType } from "../types";
 
 export default defineEventHandler(async (event) => {
   const query = getQuery(event);
-  const { page, limit, filter } = query;
+  const { page, filter } = query;
 
-  let queryBuild = BASE_URL + `?_page=${page}&_limit=${limit}`;
+  let queryBuild = BASE_URL + `?_page=${page}&_limit=${MAX_ITEMS_PER_PAGE}`;
 
   if (filter) {
     queryBuild += `&type_like=${filter}`;
@@ -20,7 +20,7 @@ export default defineEventHandler(async (event) => {
       if (response) {
         const total = response.headers.get("X-Total-Count");
         if (total) {
-          result.pages = Math.ceil(Number(total) / Number(limit));
+          result.pages = Math.ceil(Number(total) / Number(MAX_ITEMS_PER_PAGE));
         }
       }
     },
